@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sketch</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
+    <script src="libraries/p5.Polar.js"></script> 
+    <script src="libraries/midiplayer.js"></script>
+    <script src="libraries/soundfont-player.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tonal/browser/tonal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alptugan/p5.utils@latest/src/p5.utils.min.js"></script>   
+  </head>
+
+  <body style="background-color:black;">
+    <script src="sketch.js"></script>
+    <p id="select-file" style="color:White">
+      <input type="file" accept=".mid,.midi,audio/midi" onchange="loadFile()" onclick="Player.stop()" />
+    </p>
+    <p style="color:White">
+      <button class="button button-primary" id="play-button" onclick="Player.isPlaying() ? pause() : play();" >Play</button>
+      <button class="button" onclick="stop()">Stop</button>
+    </p>
+    <p style="color:White">
+      Tempo: <span id="tempo-display">60</span> bpm<br />
+      <input type="range" onchange="Player.pause();Player.setTempo(this.value);Player.play()" min="50" max="200">
+    </p>
+  </body>
+</html>
